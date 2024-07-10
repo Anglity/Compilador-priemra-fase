@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compilador</title>
+    <!-- Fuente de Google Fonts para usar en la página -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos básicos para el cuerpo de la página */
+        body {
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 0;
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Contenedor principal que agrupa todo el contenido */
+        .container {
+            display: flex;
+            flex-direction: column;
+            width: 95%;
+            height: 95%;
+            margin-top: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background: #fff;
+        }
+
+        /* Estilos para la barra de menú */
+        .menu {
+            display: flex;
+            background: #333;
+            color: #fff;
+            padding: 10px;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .menu button, .menu input {
+            margin: 0 5px;
+            padding: 10px 20px;
+            background: #444;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .menu input {
+            display: none;
+        }
+
+        .menu button:hover {
+            background: #555;
+        }
+
+        /* Estilos para las filas que agrupan columnas */
+        .row {
+            display: flex;
+            flex: 1;
+            padding: 10px;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        /* Estilos para las columnas */
+        .column {
+            flex: 1;
+            margin: 0 5px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .column h3 {
+            margin: 0 0 10px 0;
+            background: #333;
+            color: #fff;
+            padding: 10px;
+        }
+
+        /* Estilos para las áreas de texto */
+        textarea {
+            flex: 1;
+            padding: 10px;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            resize: none;
+            overflow-y: auto;
+            height: calc(100% - 30px);
+        }
+
+        /* Estilos para las tablas */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background: #333;
+            color: #fff;
+        }
+
+        /* Estilos para la barra de estado */
+        .status-bar {
+            padding: 10px;
+            background: #333;
+            color: #fff;
+            text-align: center;
+        }
+
+        /* Estilos para la consola */
+        .console {
+            background: #222;
+            color: #0f0;
+            padding: 10px;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 14px;
+            height: 100px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+
+        .table-wrapper {
+            flex: 1;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Contenedor principal -->
+    <div class="container">
+        <!-- Barra de menú -->
+        <div class="menu">
+            <div>
+                <button id="new">Nuevo</button>
+                <input type="file" id="fileInput">
+                <button id="open">Abrir</button>
+                <button id="save">Guardar</button>
+                <button id="saveAs">Guardar como</button>
+            </div>
+            <div>
+                <button id="analyze">Analizar</button>
+                <button id="translateToPHP">Traducir a PHP</button>
+                <button id="translateToC">Traducir a C</button>
+                <button id="clear">Limpiar</button>
+                <button id="exit">Salir</button>
+            </div>
+        </div>
+        <!-- Sección de código fuente y destino -->
+        <div class="row">
+            <div class="column">
+                <h3>Código Fuente (JavaScript)</h3>
+                <textarea id="sourceCode"></textarea>
+            </div>
+            <div class="column">
+                <h3>Código Destino</h3>
+                <textarea id="destinationCode"></textarea>
+            </div>
+        </div>
+        <!-- Sección de errores y tabla de símbolos -->
+        <div class="row">
+            <div class="column">
+                <h3>Errores Detectados</h3>
+                <textarea id="errors"></textarea>
+            </div>
+            <div class="column">
+                <h3>Tabla de Símbolos</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Lexema</th>
+                                <th>Token</th>
+                                <th>[Línea, Columna]</th>
+                            </tr>
+                        </thead>
+                        <tbody id="symbolTable"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- Sección de consola -->
+        <div class="row">
+            <div class="column">
+                <h3>Consola</h3>
+                <div class="console" id="console"></div>
+            </div>
+        </div>
+        <!-- Barra de estado -->
+        <div class="status-bar" id="statusBar">Listo</div>
+    </div>
+    <script src="compiler.js"></script>
+</body>
+</html>
