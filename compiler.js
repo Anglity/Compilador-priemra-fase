@@ -8,6 +8,7 @@ document.getElementById('saveAs').addEventListener('click', saveAsFile);
 document.getElementById('clear').addEventListener('click', clearAll);
 document.getElementById('exit').addEventListener('click', exitApp);
 document.getElementById('new').addEventListener('click', newFile);
+document.getElementById('runJs').addEventListener('click', runJavaScript);
 
 // Función para actualizar la barra de estado
 function setStatusBar(message) {
@@ -209,9 +210,6 @@ function newFile() {
         logToConsole("Nuevo archivo creado.");
     }
 }
-
-// Agregar evento al nuevo botón para ejecutar JavaScript
-document.getElementById('runJs').addEventListener('click', runJavaScript);
 
 // Función para ejecutar el código JavaScript y mostrar el resultado en la consola
 function runJavaScript() {
