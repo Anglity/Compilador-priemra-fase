@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,8 +14,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            background-color: #f4f4f4;
-            color: #333;
+            background-color: #e9ecef;
+            color: #495057;
             padding: 0;
             margin: 0;
             height: 100vh;
@@ -27,28 +28,35 @@
             flex-direction: column;
             width: 95%;
             height: 95%;
-            margin-top: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            background: #fff;
+            margin-top: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
         }
 
         /* Estilos para la barra de menú */
         .menu {
             display: flex;
-            background: #333;
-            color: #fff;
-            padding: 10px;
+            background: #343a40;
+            color: #ffffff;
+            padding: 15px;
             justify-content: space-between;
             align-items: center;
+            border-bottom: 1px solid #dee2e6;
         }
 
-        .menu button, .menu input {
-            margin: 0 5px;
-            padding: 10px 20px;
-            background: #444;
-            color: #fff;
+        .menu button,
+        .menu input {
+            margin: 0 10px;
+            padding: 12px 24px;
+            background: #495057;
+            color: #ffffff;
             border: none;
+            border-radius: 4px;
             cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s ease;
         }
 
         .menu input {
@@ -56,14 +64,14 @@
         }
 
         .menu button:hover {
-            background: #555;
+            background: #6c757d;
         }
 
         /* Estilos para las filas que agrupan columnas */
         .row {
             display: flex;
             flex: 1;
-            padding: 10px;
+            padding: 20px;
             box-sizing: border-box;
             overflow: hidden;
         }
@@ -71,30 +79,33 @@
         /* Estilos para las columnas */
         .column {
             flex: 1;
-            margin: 0 5px;
+            margin: 0 15px;
             display: flex;
             flex-direction: column;
         }
 
         .column h3 {
-            margin: 0 0 10px 0;
-            background: #333;
-            color: #fff;
-            padding: 10px;
+            margin: 0 0 15px 0;
+            background: #343a40;
+            color: #ffffff;
+            padding: 15px;
+            border-radius: 4px;
+            font-size: 18px;
         }
 
         /* Estilos para las áreas de texto */
         textarea {
             flex: 1;
-            padding: 10px;
+            padding: 15px;
             font-family: 'Roboto Mono', monospace;
-            font-size: 14px;
-            border: 1px solid #ddd;
+            font-size: 16px;
+            border: 1px solid #ced4da;
             border-radius: 4px;
             box-sizing: border-box;
             resize: none;
             overflow-y: auto;
-            height: calc(100% - 30px);
+            background-color: #f8f9fa;
+            color: #495057;
         }
 
         /* Estilos para las tablas */
@@ -102,45 +113,57 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 10px;
+            font-size: 14px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
         }
 
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
+        th,
+        td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
             text-align: left;
         }
 
         th {
-            background: #333;
-            color: #fff;
+            background: #343a40;
+            color: #ffffff;
         }
 
         /* Estilos para la barra de estado */
         .status-bar {
-            padding: 10px;
-            background: #333;
-            color: #fff;
+            padding: 15px;
+            background: #343a40;
+            color: #ffffff;
             text-align: center;
+            font-size: 16px;
+            border-top: 1px solid #dee2e6;
         }
 
         /* Estilos para la consola */
         .console {
-            background: #222;
-            color: #0f0;
-            padding: 10px;
+            background: #212529;
+            color: #f8f9fa;
+            padding: 15px;
             font-family: 'Roboto Mono', monospace;
-            font-size: 14px;
-            height: 100px;
+            font-size: 16px;
+            height: 200px;
             overflow-y: auto;
             white-space: pre-wrap;
+            border-radius: 4px;
         }
 
         .table-wrapper {
             flex: 1;
             overflow-y: auto;
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ced4da;
         }
     </style>
 </head>
+
 <body>
     <!-- Contenedor principal -->
     <div class="container">
@@ -156,7 +179,6 @@
             <div>
                 <button id="analyze">Analizar</button>
                 <button id="translateToPHP">Traducir a PHP</button>
-                <!-- Agregar el nuevo botón en la barra de menú -->
                 <button id="runJs">Ejecutar JavaScript</button>
                 <button id="translateToC">Traducir a C</button>
                 <button id="clear">Limpiar</button>
@@ -208,4 +230,5 @@
     </div>
     <script src="compiler.js"></script>
 </body>
+
 </html>

@@ -1,0 +1,30 @@
+// Función para comprobar si un número es primo
+function esPrimo(num) {
+    if (num < 2) return false;
+    if (num === 2) return true;
+    if (num % 2 === 0) return false;
+    
+    for (let i = 3; i <= Math.sqrt(num); i += 2) {
+        if (num % i === 0) return false;
+    }
+    
+    return true;
+}
+
+// Función para obtener todos los números primos en un rango dado
+function obtenerPrimos(hasta) {
+    const primos = [2]; // Inicia la lista con el primer número primo
+    for (let i = 3; i <= hasta; i += 2) {
+        if (esPrimo(i)) {
+            primos.push(i);
+        }
+    }
+    return primos;
+}
+
+// Definir el rango y calcular los números primos
+const rango = 100;
+const numerosPrimos = obtenerPrimos(rango);
+
+// Devolver la lista de números primos
+numerosPrimos; // Esto debería devolver un array con los números primos hasta 100
