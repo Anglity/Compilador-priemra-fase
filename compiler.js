@@ -209,3 +209,22 @@ function newFile() {
         logToConsole("Nuevo archivo creado.");
     }
 }
+
+// Agregar evento al nuevo botón para ejecutar JavaScript
+document.getElementById('runJs').addEventListener('click', runJavaScript);
+
+// Función para ejecutar el código JavaScript y mostrar el resultado en la consola
+function runJavaScript() {
+    setStatusBar("Ejecutando JavaScript...");
+    logToConsole("Ejecutando código JavaScript...");
+    const sourceCode = document.getElementById('sourceCode').value;
+
+    try {
+        const result = eval(sourceCode);
+        logToConsole("Resultado: " + result);
+        setStatusBar("Ejecución completada");
+    } catch (error) {
+        logToConsole("Error: " + error.message);
+        setStatusBar("Ejecución fallida");
+    }
+}
