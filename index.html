@@ -5,10 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Compilador</title>
-    <!-- Fuente de Google Fonts para usar en la página -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Estilos básicos para el cuerpo de la página */
         body {
             font-family: 'Roboto', sans-serif;
             display: flex;
@@ -19,23 +17,19 @@
             padding: 0;
             margin: 0;
             height: 100vh;
-            overflow: hidden;
         }
 
-        /* Contenedor principal que agrupa todo el contenido */
         .container {
             display: flex;
             flex-direction: column;
             width: 95%;
-            height: 95%;
+            height: 100%;
             margin-top: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             background: #ffffff;
             border-radius: 8px;
-            overflow: hidden;
         }
 
-        /* Estilos para la barra de menú */
         .menu {
             display: flex;
             background: #343a40;
@@ -44,6 +38,7 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid #dee2e6;
+            flex-shrink: 0;
         }
 
         .menu button,
@@ -67,33 +62,31 @@
             background: #6c757d;
         }
 
-        /* Estilos para las filas que agrupan columnas */
         .row {
             display: flex;
             flex: 1;
-            padding: 20px;
+            padding: 10px;
             box-sizing: border-box;
             overflow: hidden;
+            flex-wrap: wrap;
         }
 
-        /* Estilos para las columnas */
         .column {
             flex: 1;
-            margin: 0 15px;
+            margin: 10px;
             display: flex;
             flex-direction: column;
         }
 
         .column h3 {
-            margin: 0 0 15px 0;
+            margin: 0 0 10px 0;
             background: #343a40;
             color: #ffffff;
-            padding: 15px;
+            padding: 10px;
             border-radius: 4px;
-            font-size: 18px;
+            font-size: 16px;
         }
 
-        /* Estilos para las áreas de texto */
         textarea {
             flex: 1;
             padding: 15px;
@@ -108,7 +101,6 @@
             color: #495057;
         }
 
-        /* Estilos para las tablas */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -130,24 +122,13 @@
             color: #ffffff;
         }
 
-        /* Estilos para la barra de estado */
-        .status-bar {
-            padding: 15px;
-            background: #343a40;
-            color: #ffffff;
-            text-align: center;
-            font-size: 16px;
-            border-top: 1px solid #dee2e6;
-        }
-
-        /* Estilos para la consola */
         .console {
             background: #212529;
             color: #f8f9fa;
             padding: 15px;
             font-family: 'Roboto Mono', monospace;
             font-size: 16px;
-            height: 200px;
+            height: 150px;
             overflow-y: auto;
             white-space: pre-wrap;
             border-radius: 4px;
@@ -160,14 +141,23 @@
             padding: 10px;
             border-radius: 4px;
             border: 1px solid #ced4da;
+            max-height: 250px; /* Ajuste del alto máximo de la tabla para habilitar el scroll */
+        }
+
+        .status-bar {
+            padding: 15px;
+            background: #343a40;
+            color: #ffffff;
+            text-align: center;
+            font-size: 16px;
+            border-top: 1px solid #dee2e6;
+            flex-shrink: 0;
         }
     </style>
 </head>
 
 <body>
-    <!-- Contenedor principal -->
     <div class="container">
-        <!-- Barra de menú -->
         <div class="menu">
             <div>
                 <button id="new">Nuevo</button>
@@ -185,7 +175,6 @@
                 <button id="exit">Salir</button>
             </div>
         </div>
-        <!-- Sección de código fuente y destino -->
         <div class="row">
             <div class="column">
                 <h3>Código Fuente (JavaScript)</h3>
@@ -196,7 +185,6 @@
                 <textarea id="destinationCode"></textarea>
             </div>
         </div>
-        <!-- Sección de errores y tabla de símbolos -->
         <div class="row">
             <div class="column">
                 <h3>Errores Detectados</h3>
@@ -218,14 +206,12 @@
                 </div>
             </div>
         </div>
-        <!-- Sección de consola -->
         <div class="row">
             <div class="column">
                 <h3>Consola</h3>
                 <div class="console" id="console"></div>
             </div>
         </div>
-        <!-- Barra de estado -->
         <div class="status-bar" id="statusBar">Listo</div>
     </div>
     <script src="compiler.js"></script>
