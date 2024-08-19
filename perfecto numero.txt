@@ -1,0 +1,31 @@
+// Función para comprobar si un número es perfecto
+function esPerfecto(num) {
+    let suma = 1;
+    
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) {
+            suma += i;
+            if (i !== num / i) {
+                suma += num / i;
+            }
+        }
+    }
+    
+    return suma === num && num !== 1;
+}
+
+// Función para obtener todos los números perfectos en un rango dado
+function obtenerPerfectos(hasta) {
+    const perfectos = [];
+    for (let i = 2; i <= hasta; i++) {
+        if (esPerfecto(i)) {
+            perfectos.push(i);
+        }
+    }
+    return perfectos;
+}
+
+// Simular la entrada de datos
+const rango = parseInt(promptInput('Introduce un número para el rango: '), 10);
+const numerosPerfectos = obtenerPerfectos(rango);
+numerosPerfectos;

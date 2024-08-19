@@ -211,14 +211,25 @@ function newFile() {
     }
 }
 
-// Función para ejecutar el código JavaScript y mostrar el resultado en la consola
-function runJavaScript() {
+ // Función para ejecutar código JavaScript en un entorno controlado
+ function runJavaScript() {
     setStatusBar("Ejecutando JavaScript...");
     logToConsole("Ejecutando código JavaScript...");
     const sourceCode = document.getElementById('sourceCode').value;
 
     try {
-        const result = eval(sourceCode);
+        // Crear una función que permita la simulación de la entrada de datos
+        const inputSimulator = `
+        function promptInput(question) {
+            return prompt(question);
+        }
+        `;
+
+        // Incluir el código del usuario junto con el simulador de entrada
+        const fullCode = inputSimulator + sourceCode;
+        
+        // Ejecutar el código con `eval`
+        const result = eval(fullCode);
         logToConsole("Resultado: " + result);
         setStatusBar("Ejecución completada");
     } catch (error) {
